@@ -416,7 +416,7 @@ call it.  "
                      (ensure-list field-typespec)
                    (declare (ignore anon-params))
                    (let* ((anonymous-fields (parse-record-fields anon-record-type nil
-                                                                 anon-field-list bit-offset)))
+                                                                 anon-field-list (+ pre-offset (or bit-offset 0)))))
                      (loop for i in anonymous-fields
                            do (push i record-fields))))))
         finally (return (delete-if #'null record-fields))))
